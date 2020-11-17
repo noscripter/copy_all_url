@@ -4,6 +4,9 @@
   "main": "index.js",
   "repository": "git@github.com:noscripter/copy_all_url.git",
   "author": "noscripter <xiaozhenghitfm@gmail.com>",
+  "scripts": {
+    "zip": "zip -r copy_all_url.zip ./*.js ./*.html ./*.css ./manifest.json vendor/ img/"
+  },
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.13.0"
