@@ -21,7 +21,7 @@
 
   $(function () {
 
-    "use strict"
+    'use strict'
 
     /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
      * ======================================================= */
@@ -33,13 +33,13 @@
 
       return support && {
         end: (function () {
-          var transitionEnd = "TransitionEnd"
+          var transitionEnd = 'TransitionEnd'
           if ( $.browser.webkit ) {
-          	transitionEnd = "webkitTransitionEnd"
+          	transitionEnd = 'webkitTransitionEnd'
           } else if ( $.browser.mozilla ) {
-          	transitionEnd = "transitionend"
+          	transitionEnd = 'transitionend'
           } else if ( $.browser.opera ) {
-          	transitionEnd = "oTransitionEnd"
+          	transitionEnd = 'oTransitionEnd'
           }
           return transitionEnd
         }())
@@ -48,7 +48,7 @@
 
   })
 
-}( window.jQuery );/* ==========================================================
+}( window.jQuery )/* ==========================================================
  * bootstrap-alert.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
@@ -70,21 +70,21 @@
 
 !function( $ ){
 
-  "use strict"
+  'use strict'
 
- /* ALERT CLASS DEFINITION
+  /* ALERT CLASS DEFINITION
   * ====================== */
 
   var dismiss = '[data-dismiss="alert"]'
     , Alert = function ( el ) {
-        $(el).on('click', dismiss, this.close)
-      }
+      $(el).on('click', dismiss, this.close)
+    }
 
   Alert.prototype = {
 
     constructor: Alert
 
-  , close: function ( e ) {
+    , close: function ( e ) {
       var $this = $(this)
         , selector = $this.attr('data-target')
         , $parent
@@ -119,7 +119,7 @@
   }
 
 
- /* ALERT PLUGIN DEFINITION
+  /* ALERT PLUGIN DEFINITION
   * ======================= */
 
   $.fn.alert = function ( option ) {
@@ -134,14 +134,14 @@
   $.fn.alert.Constructor = Alert
 
 
- /* ALERT DATA-API
+  /* ALERT DATA-API
   * ============== */
 
   $(function () {
     $('body').on('click.alert.data-api', dismiss, Alert.prototype.close)
   })
 
-}( window.jQuery );/* ============================================================
+}( window.jQuery )/* ============================================================
  * bootstrap-button.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#buttons
  * ============================================================
@@ -162,9 +162,9 @@
 
 !function( $ ){
 
-  "use strict"
+  'use strict'
 
- /* BUTTON PUBLIC CLASS DEFINITION
+  /* BUTTON PUBLIC CLASS DEFINITION
   * ============================== */
 
   var Button = function ( element, options ) {
@@ -174,41 +174,41 @@
 
   Button.prototype = {
 
-      constructor: Button
+    constructor: Button
 
     , setState: function ( state ) {
-        var d = 'disabled'
-          , $el = this.$element
-          , data = $el.data()
-          , val = $el.is('input') ? 'val' : 'html'
+      var d = 'disabled'
+        , $el = this.$element
+        , data = $el.data()
+        , val = $el.is('input') ? 'val' : 'html'
 
-        state = state + 'Text'
-        data.resetText || $el.data('resetText', $el[val]())
+      state = state + 'Text'
+      data.resetText || $el.data('resetText', $el[val]())
 
-        $el[val](data[state] || this.options[state])
+      $el[val](data[state] || this.options[state])
 
-        // push to event loop to allow forms to submit
-        setTimeout(function () {
-          state == 'loadingText' ?
-            $el.addClass(d).attr(d, d) :
-            $el.removeClass(d).removeAttr(d)
-        }, 0)
-      }
+      // push to event loop to allow forms to submit
+      setTimeout(function () {
+        state == 'loadingText' ?
+          $el.addClass(d).attr(d, d) :
+          $el.removeClass(d).removeAttr(d)
+      }, 0)
+    }
 
     , toggle: function () {
-        var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
+      var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
 
-        $parent && $parent
-          .find('.active')
-          .removeClass('active')
+      $parent && $parent
+        .find('.active')
+        .removeClass('active')
 
-        this.$element.toggleClass('active')
-      }
+      this.$element.toggleClass('active')
+    }
 
   }
 
 
- /* BUTTON PLUGIN DEFINITION
+  /* BUTTON PLUGIN DEFINITION
   * ======================== */
 
   $.fn.button = function ( option ) {
@@ -229,7 +229,7 @@
   $.fn.button.Constructor = Button
 
 
- /* BUTTON DATA-API
+  /* BUTTON DATA-API
   * =============== */
 
   $(function () {
@@ -240,7 +240,7 @@
     })
   })
 
-}( window.jQuery );/* ==========================================================
+}( window.jQuery )/* ==========================================================
  * bootstrap-carousel.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#carousel
  * ==========================================================
@@ -262,9 +262,9 @@
 
 !function( $ ){
 
-  "use strict"
+  'use strict'
 
- /* CAROUSEL CLASS DEFINITION
+  /* CAROUSEL CLASS DEFINITION
   * ========================= */
 
   var Carousel = function (element, options) {
@@ -283,7 +283,7 @@
       return this
     }
 
-  , to: function (pos) {
+    , to: function (pos) {
       var $active = this.$element.find('.active')
         , children = $active.parent().children()
         , activePos = children.index($active)
@@ -304,23 +304,23 @@
       return this.slide(pos > activePos ? 'next' : 'prev', $(children[pos]))
     }
 
-  , pause: function () {
+    , pause: function () {
       clearInterval(this.interval)
       this.interval = null
       return this
     }
 
-  , next: function () {
+    , next: function () {
       if (this.sliding) return
       return this.slide('next')
     }
 
-  , prev: function () {
+    , prev: function () {
       if (this.sliding) return
       return this.slide('prev')
     }
 
-  , slide: function (type, next) {
+    , slide: function (type, next) {
       var $active = this.$element.find('.active')
         , $next = next || $active[type]()
         , isCycling = this.interval
@@ -364,7 +364,7 @@
   }
 
 
- /* CAROUSEL PLUGIN DEFINITION
+  /* CAROUSEL PLUGIN DEFINITION
   * ========================== */
 
   $.fn.carousel = function ( option ) {
@@ -381,13 +381,13 @@
 
   $.fn.carousel.defaults = {
     interval: 5000
-  , pause: 'hover'
+    , pause: 'hover'
   }
 
   $.fn.carousel.Constructor = Carousel
 
 
- /* CAROUSEL DATA-API
+  /* CAROUSEL DATA-API
   * ================= */
 
   $(function () {
@@ -400,7 +400,7 @@
     })
   })
 
-}( window.jQuery );/* =============================================================
+}( window.jQuery )/* =============================================================
  * bootstrap-collapse.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
@@ -421,14 +421,14 @@
 
 !function( $ ){
 
-  "use strict"
+  'use strict'
 
   var Collapse = function ( element, options ) {
   	this.$element = $(element)
     this.options = $.extend({}, $.fn.collapse.defaults, options)
 
-    if (this.options["parent"]) {
-      this.$parent = $(this.options["parent"])
+    if (this.options['parent']) {
+      this.$parent = $(this.options['parent'])
     }
 
     this.options.toggle && this.toggle()
@@ -438,12 +438,12 @@
 
     constructor: Collapse
 
-  , dimension: function () {
+    , dimension: function () {
       var hasWidth = this.$element.hasClass('width')
       return hasWidth ? 'width' : 'height'
     }
 
-  , show: function () {
+    , show: function () {
       var dimension = this.dimension()
         , scroll = $.camelCase(['scroll', dimension].join('-'))
         , actives = this.$parent && this.$parent.find('.in')
@@ -461,14 +461,14 @@
 
     }
 
-  , hide: function () {
+    , hide: function () {
       var dimension = this.dimension()
       this.reset(this.$element[dimension]())
       this.transition('removeClass', 'hide', 'hidden')
       this.$element[dimension](0)
     }
 
-  , reset: function ( size ) {
+    , reset: function ( size ) {
       var dimension = this.dimension()
 
       this.$element
@@ -481,12 +481,12 @@
       return this
     }
 
-  , transition: function ( method, startEvent, completeEvent ) {
+    , transition: function ( method, startEvent, completeEvent ) {
       var that = this
         , complete = function () {
-            if (startEvent == 'show') that.reset()
-            that.$element.trigger(completeEvent)
-          }
+          if (startEvent == 'show') that.reset()
+          that.$element.trigger(completeEvent)
+        }
 
       this.$element
         .trigger(startEvent)
@@ -497,7 +497,7 @@
         complete()
   	}
 
-  , toggle: function () {
+    , toggle: function () {
       this[this.$element.hasClass('in') ? 'hide' : 'show']()
   	}
 
@@ -523,7 +523,7 @@
   $.fn.collapse.Constructor = Collapse
 
 
- /* COLLAPSIBLE DATA-API
+  /* COLLAPSIBLE DATA-API
   * ==================== */
 
   $(function () {
@@ -537,7 +537,7 @@
     })
   })
 
-}( window.jQuery );/* ============================================================
+}( window.jQuery )/* ============================================================
  * bootstrap-dropdown.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
@@ -559,24 +559,24 @@
 
 !function( $ ){
 
-  "use strict"
+  'use strict'
 
- /* DROPDOWN CLASS DEFINITION
+  /* DROPDOWN CLASS DEFINITION
   * ========================= */
 
   var toggle = '[data-toggle="dropdown"]'
     , Dropdown = function ( element ) {
-        var $el = $(element).on('click.dropdown.data-api', this.toggle)
-        $('html').on('click.dropdown.data-api', function () {
-          $el.parent().removeClass('open')
-        })
-      }
+      var $el = $(element).on('click.dropdown.data-api', this.toggle)
+      $('html').on('click.dropdown.data-api', function () {
+        $el.parent().removeClass('open')
+      })
+    }
 
   Dropdown.prototype = {
 
     constructor: Dropdown
 
-  , toggle: function ( e ) {
+    , toggle: function ( e ) {
       var $this = $(this)
         , selector = $this.attr('data-target')
         , $parent
@@ -628,7 +628,7 @@
     $('body').on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
   })
 
-}( window.jQuery );/* =========================================================
+}( window.jQuery )/* =========================================================
  * bootstrap-modal.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
@@ -650,9 +650,9 @@
 
 !function( $ ){
 
-  "use strict"
+  'use strict'
 
- /* MODAL CLASS DEFINITION
+  /* MODAL CLASS DEFINITION
   * ====================== */
 
   var Modal = function ( content, options ) {
@@ -663,77 +663,77 @@
 
   Modal.prototype = {
 
-      constructor: Modal
+    constructor: Modal
 
     , toggle: function () {
-        return this[!this.isShown ? 'show' : 'hide']()
-      }
+      return this[!this.isShown ? 'show' : 'hide']()
+    }
 
     , show: function () {
-        var that = this
+      var that = this
 
-        if (this.isShown) return
+      if (this.isShown) return
 
-        $('body').addClass('modal-open')
+      $('body').addClass('modal-open')
 
-        this.isShown = true
-        this.$element.trigger('show')
+      this.isShown = true
+      this.$element.trigger('show')
 
-        escape.call(this)
-        backdrop.call(this, function () {
-          var transition = $.support.transition && that.$element.hasClass('fade')
+      escape.call(this)
+      backdrop.call(this, function () {
+        var transition = $.support.transition && that.$element.hasClass('fade')
 
-          !that.$element.parent().length && that.$element.appendTo(document.body) //don't move modals dom position
+        !that.$element.parent().length && that.$element.appendTo(document.body) //don't move modals dom position
 
-          that.$element
-            .show()
+        that.$element
+          .show()
 
-          if (transition) {
-            that.$element[0].offsetWidth // force reflow
-          }
+        if (transition) {
+          that.$element[0].offsetWidth // force reflow
+        }
 
-          that.$element.addClass('in')
+        that.$element.addClass('in')
 
-          transition ?
-            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
-            that.$element.trigger('shown')
+        transition ?
+          that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
+          that.$element.trigger('shown')
 
-        })
-      }
+      })
+    }
 
     , hide: function ( e ) {
-        e && e.preventDefault()
+      e && e.preventDefault()
 
-        if (!this.isShown) return
+      if (!this.isShown) return
 
-        var that = this
-        this.isShown = false
+      var that = this
+      this.isShown = false
 
-        $('body').removeClass('modal-open')
+      $('body').removeClass('modal-open')
 
-        escape.call(this)
+      escape.call(this)
 
-        this.$element
-          .trigger('hide')
-          .removeClass('in')
+      this.$element
+        .trigger('hide')
+        .removeClass('in')
 
-        $.support.transition && this.$element.hasClass('fade') ?
-          hideWithTransition.call(this) :
-          hideModal.call(this)
-      }
+      $.support.transition && this.$element.hasClass('fade') ?
+        hideWithTransition.call(this) :
+        hideModal.call(this)
+    }
 
   }
 
 
- /* MODAL PRIVATE METHODS
+  /* MODAL PRIVATE METHODS
   * ===================== */
 
   function hideWithTransition() {
     var that = this
       , timeout = setTimeout(function () {
-          that.$element.off($.support.transition.end)
-          hideModal.call(that)
-        }, 500)
+        that.$element.off($.support.transition.end)
+        hideModal.call(that)
+      }, 500)
 
     this.$element.one($.support.transition.end, function () {
       clearTimeout(timeout)
@@ -800,7 +800,7 @@
   }
 
 
- /* MODAL PLUGIN DEFINITION
+  /* MODAL PLUGIN DEFINITION
   * ======================= */
 
   $.fn.modal = function ( option ) {
@@ -815,7 +815,7 @@
   }
 
   $.fn.modal.defaults = {
-      backdrop: true
+    backdrop: true
     , keyboard: true
     , show: true
   }
@@ -823,7 +823,7 @@
   $.fn.modal.Constructor = Modal
 
 
- /* MODAL DATA-API
+  /* MODAL DATA-API
   * ============== */
 
   $(function () {
@@ -837,7 +837,7 @@
     })
   })
 
-}( window.jQuery );/* ===========================================================
+}( window.jQuery )/* ===========================================================
  * bootstrap-tooltip.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
@@ -859,9 +859,9 @@
 
 !function( $ ) {
 
-  "use strict"
+  'use strict'
 
- /* TOOLTIP PUBLIC CLASS DEFINITION
+  /* TOOLTIP PUBLIC CLASS DEFINITION
   * =============================== */
 
   var Tooltip = function ( element, options ) {
@@ -872,7 +872,7 @@
 
     constructor: Tooltip
 
-  , init: function ( type, element, options ) {
+    , init: function ( type, element, options ) {
       var eventIn
         , eventOut
 
@@ -893,20 +893,20 @@
         this.fixTitle()
     }
 
-  , getOptions: function ( options ) {
+    , getOptions: function ( options ) {
       options = $.extend({}, $.fn[this.type].defaults, options, this.$element.data())
 
       if (options.delay && typeof options.delay == 'number') {
         options.delay = {
           show: options.delay
-        , hide: options.delay
+          , hide: options.delay
         }
       }
 
       return options
     }
 
-  , enter: function ( e ) {
+    , enter: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
       if (!self.options.delay || !self.options.delay.show) {
@@ -921,7 +921,7 @@
       }
     }
 
-  , leave: function ( e ) {
+    , leave: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
       if (!self.options.delay || !self.options.delay.hide) {
@@ -936,7 +936,7 @@
       }
     }
 
-  , show: function () {
+    , show: function () {
       var $tip
         , inside
         , pos
@@ -970,18 +970,18 @@
         actualHeight = $tip[0].offsetHeight
 
         switch (inside ? placement.split(' ')[1] : placement) {
-          case 'bottom':
-            tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'top':
-            tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'left':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
-            break
-          case 'right':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
-            break
+        case 'bottom':
+          tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
+          break
+        case 'top':
+          tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
+          break
+        case 'left':
+          tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
+          break
+        case 'right':
+          tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
+          break
         }
 
         $tip
@@ -991,13 +991,13 @@
       }
     }
 
-  , setContent: function () {
+    , setContent: function () {
       var $tip = this.tip()
       $tip.find('.tooltip-inner').html(this.getTitle())
       $tip.removeClass('fade in top bottom left right')
     }
 
-  , hide: function () {
+    , hide: function () {
       var that = this
         , $tip = this.tip()
 
@@ -1019,25 +1019,25 @@
         $tip.remove()
     }
 
-  , fixTitle: function () {
+    , fixTitle: function () {
       var $e = this.$element
       if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
         $e.attr('data-original-title', $e.attr('title') || '').removeAttr('title')
       }
     }
 
-  , hasContent: function () {
+    , hasContent: function () {
       return this.getTitle()
     }
 
-  , getPosition: function (inside) {
+    , getPosition: function (inside) {
       return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
         width: this.$element[0].offsetWidth
-      , height: this.$element[0].offsetHeight
+        , height: this.$element[0].offsetHeight
       })
     }
 
-  , getTitle: function () {
+    , getTitle: function () {
       var title
         , $e = this.$element
         , o = this.options
@@ -1045,16 +1045,16 @@
       title = $e.attr('data-original-title')
         || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
 
-      title = (title || '').toString().replace(/(^\s*|\s*$)/, "")
+      title = (title || '').toString().replace(/(^\s*|\s*$)/, '')
 
       return title
     }
 
-  , tip: function () {
+    , tip: function () {
       return this.$tip = this.$tip || $(this.options.template)
     }
 
-  , validate: function () {
+    , validate: function () {
       if (!this.$element[0].parentNode) {
         this.hide()
         this.$element = null
@@ -1062,26 +1062,26 @@
       }
     }
 
-  , enable: function () {
+    , enable: function () {
       this.enabled = true
     }
 
-  , disable: function () {
+    , disable: function () {
       this.enabled = false
     }
 
-  , toggleEnabled: function () {
+    , toggleEnabled: function () {
       this.enabled = !this.enabled
     }
 
-  , toggle: function () {
+    , toggle: function () {
       this[this.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
   }
 
 
- /* TOOLTIP PLUGIN DEFINITION
+  /* TOOLTIP PLUGIN DEFINITION
   * ========================= */
 
   $.fn.tooltip = function ( option ) {
@@ -1098,15 +1098,15 @@
 
   $.fn.tooltip.defaults = {
     animation: true
-  , delay: 0
-  , selector: false
-  , placement: 'top'
-  , trigger: 'hover'
-  , title: ''
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+    , delay: 0
+    , selector: false
+    , placement: 'top'
+    , trigger: 'hover'
+    , title: ''
+    , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   }
 
-}( window.jQuery );/* ===========================================================
+}( window.jQuery )/* ===========================================================
  * bootstrap-popover.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#popovers
  * ===========================================================
@@ -1128,7 +1128,7 @@
 
 !function( $ ) {
 
- "use strict"
+  'use strict'
 
   var Popover = function ( element, options ) {
     this.init('popover', element, options)
@@ -1141,7 +1141,7 @@
 
     constructor: Popover
 
-  , setContent: function () {
+    , setContent: function () {
       var $tip = this.tip()
         , title = this.getTitle()
         , content = this.getContent()
@@ -1152,11 +1152,11 @@
       $tip.removeClass('fade top bottom left right in')
     }
 
-  , hasContent: function () {
+    , hasContent: function () {
       return this.getTitle() || this.getContent()
     }
 
-  , getContent: function () {
+    , getContent: function () {
       var content
         , $e = this.$element
         , o = this.options
@@ -1164,12 +1164,12 @@
       content = $e.attr('data-content')
         || (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
 
-      content = content.toString().replace(/(^\s*|\s*$)/, "")
+      content = content.toString().replace(/(^\s*|\s*$)/, '')
 
       return content
     }
 
-  , tip: function() {
+    , tip: function() {
       if (!this.$tip) {
         this.$tip = $(this.options.template)
       }
@@ -1179,7 +1179,7 @@
   })
 
 
- /* POPOVER PLUGIN DEFINITION
+  /* POPOVER PLUGIN DEFINITION
   * ======================= */
 
   $.fn.popover = function ( option ) {
@@ -1196,11 +1196,11 @@
 
   $.fn.popover.defaults = $.extend({} , $.fn.tooltip.defaults, {
     placement: 'right'
-  , content: ''
-  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+    , content: ''
+    , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   })
 
-}( window.jQuery );/* =============================================================
+}( window.jQuery )/* =============================================================
  * bootstrap-scrollspy.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#scrollspy
  * =============================================================
@@ -1221,7 +1221,7 @@
 
 !function ( $ ) {
 
-  "use strict"
+  'use strict'
 
   /* SCROLLSPY CLASS DEFINITION
    * ========================== */
@@ -1242,59 +1242,59 @@
 
   ScrollSpy.prototype = {
 
-      constructor: ScrollSpy
+    constructor: ScrollSpy
 
     , refresh: function () {
-        this.targets = this.$body
-          .find(this.selector)
-          .map(function () {
-            var href = $(this).attr('href')
-            return /^#\w/.test(href) && $(href).length ? href : null
-          })
-
-        this.offsets = $.map(this.targets, function (id) {
-          return $(id).position().top
+      this.targets = this.$body
+        .find(this.selector)
+        .map(function () {
+          var href = $(this).attr('href')
+          return /^#\w/.test(href) && $(href).length ? href : null
         })
-      }
+
+      this.offsets = $.map(this.targets, function (id) {
+        return $(id).position().top
+      })
+    }
 
     , process: function () {
-        var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
-          , offsets = this.offsets
-          , targets = this.targets
-          , activeTarget = this.activeTarget
-          , i
+      var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
+        , offsets = this.offsets
+        , targets = this.targets
+        , activeTarget = this.activeTarget
+        , i
 
-        for (i = offsets.length; i--;) {
-          activeTarget != targets[i]
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
             && scrollTop >= offsets[i]
             && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
             && this.activate( targets[i] )
-        }
       }
+    }
 
     , activate: function (target) {
-        var active
+      var active
 
-        this.activeTarget = target
+      this.activeTarget = target
 
-        this.$body
-          .find(this.selector).parent('.active')
-          .removeClass('active')
+      this.$body
+        .find(this.selector).parent('.active')
+        .removeClass('active')
 
-        active = this.$body
-          .find(this.selector + '[href="' + target + '"]')
-          .parent('li')
-          .addClass('active')
+      active = this.$body
+        .find(this.selector + '[href="' + target + '"]')
+        .parent('li')
+        .addClass('active')
 
-        if ( active.parent('.dropdown-menu') )  {
-          active.closest('li.dropdown').addClass('active')
-        }
+      if ( active.parent('.dropdown-menu') )  {
+        active.closest('li.dropdown').addClass('active')
       }
+    }
 
   }
 
 
- /* SCROLLSPY PLUGIN DEFINITION
+  /* SCROLLSPY PLUGIN DEFINITION
   * =========================== */
 
   $.fn.scrollspy = function ( option ) {
@@ -1314,7 +1314,7 @@
   }
 
 
- /* SCROLLSPY DATA-API
+  /* SCROLLSPY DATA-API
   * ================== */
 
   $(function () {
@@ -1324,7 +1324,7 @@
     })
   })
 
-}( window.jQuery );/* ========================================================
+}( window.jQuery )/* ========================================================
  * bootstrap-tab.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#tabs
  * ========================================================
@@ -1346,9 +1346,9 @@
 
 !function( $ ){
 
-  "use strict"
+  'use strict'
 
- /* TAB CLASS DEFINITION
+  /* TAB CLASS DEFINITION
   * ==================== */
 
   var Tab = function ( element ) {
@@ -1359,7 +1359,7 @@
 
     constructor: Tab
 
-  , show: function () {
+    , show: function () {
       var $this = this.element
         , $ul = $this.closest('ul:not(.dropdown-menu)')
         , selector = $this.attr('data-target')
@@ -1377,7 +1377,7 @@
 
       $this.trigger({
         type: 'show'
-      , relatedTarget: previous
+        , relatedTarget: previous
       })
 
       $target = $(selector)
@@ -1386,12 +1386,12 @@
       this.activate($target, $target.parent(), function () {
         $this.trigger({
           type: 'shown'
-        , relatedTarget: previous
+          , relatedTarget: previous
         })
       })
     }
 
-  , activate: function ( element, container, callback) {
+    , activate: function ( element, container, callback) {
       var $active = container.find('> .active')
         , transition = callback
             && $.support.transition
@@ -1428,7 +1428,7 @@
   }
 
 
- /* TAB PLUGIN DEFINITION
+  /* TAB PLUGIN DEFINITION
   * ===================== */
 
   $.fn.tab = function ( option ) {
@@ -1443,7 +1443,7 @@
   $.fn.tab.Constructor = Tab
 
 
- /* TAB DATA-API
+  /* TAB DATA-API
   * ============ */
 
   $(function () {
@@ -1453,7 +1453,7 @@
     })
   })
 
-}( window.jQuery );/* =============================================================
+}( window.jQuery )/* =============================================================
  * bootstrap-typeahead.js v2.0.2
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================
@@ -1474,7 +1474,7 @@
 
 !function( $ ){
 
-  "use strict"
+  'use strict'
 
   var Typeahead = function ( element, options ) {
     this.$element = $(element)
@@ -1492,21 +1492,21 @@
 
     constructor: Typeahead
 
-  , select: function () {
+    , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
       this.$element.val(val)
-      this.$element.change();
+      this.$element.change()
       return this.hide()
     }
 
-  , show: function () {
+    , show: function () {
       var pos = $.extend({}, this.$element.offset(), {
         height: this.$element[0].offsetHeight
       })
 
       this.$menu.css({
         top: pos.top + pos.height
-      , left: pos.left
+        , left: pos.left
       })
 
       this.$menu.show()
@@ -1514,13 +1514,13 @@
       return this
     }
 
-  , hide: function () {
+    , hide: function () {
       this.$menu.hide()
       this.shown = false
       return this
     }
 
-  , lookup: function (event) {
+    , lookup: function (event) {
       var that = this
         , items
         , q
@@ -1544,11 +1544,11 @@
       return this.render(items.slice(0, this.options.items)).show()
     }
 
-  , matcher: function (item) {
+    , matcher: function (item) {
       return ~item.toLowerCase().indexOf(this.query.toLowerCase())
     }
 
-  , sorter: function (items) {
+    , sorter: function (items) {
       var beginswith = []
         , caseSensitive = []
         , caseInsensitive = []
@@ -1563,13 +1563,13 @@
       return beginswith.concat(caseSensitive, caseInsensitive)
     }
 
-  , highlighter: function (item) {
+    , highlighter: function (item) {
       return item.replace(new RegExp('(' + this.query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
     }
 
-  , render: function (items) {
+    , render: function (items) {
       var that = this
 
       items = $(items).map(function (i, item) {
@@ -1583,7 +1583,7 @@
       return this
     }
 
-  , next: function (event) {
+    , next: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
         , next = active.next()
 
@@ -1594,7 +1594,7 @@
       next.addClass('active')
     }
 
-  , prev: function (event) {
+    , prev: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
         , prev = active.prev()
 
@@ -1605,7 +1605,7 @@
       prev.addClass('active')
     }
 
-  , listen: function () {
+    , listen: function () {
       this.$element
         .on('blur',     $.proxy(this.blur, this))
         .on('keypress', $.proxy(this.keypress, this))
@@ -1620,67 +1620,67 @@
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
 
-  , keyup: function (e) {
+    , keyup: function (e) {
       switch(e.keyCode) {
-        case 40: // down arrow
-        case 38: // up arrow
-          break
+      case 40: // down arrow
+      case 38: // up arrow
+        break
 
-        case 9: // tab
-        case 13: // enter
-          if (!this.shown) return
-          this.select()
-          break
+      case 9: // tab
+      case 13: // enter
+        if (!this.shown) return
+        this.select()
+        break
 
-        case 27: // escape
-          if (!this.shown) return
-          this.hide()
-          break
+      case 27: // escape
+        if (!this.shown) return
+        this.hide()
+        break
 
-        default:
-          this.lookup()
+      default:
+        this.lookup()
       }
 
       e.stopPropagation()
       e.preventDefault()
-  }
+    }
 
-  , keypress: function (e) {
+    , keypress: function (e) {
       if (!this.shown) return
 
       switch(e.keyCode) {
-        case 9: // tab
-        case 13: // enter
-        case 27: // escape
-          e.preventDefault()
-          break
+      case 9: // tab
+      case 13: // enter
+      case 27: // escape
+        e.preventDefault()
+        break
 
-        case 38: // up arrow
-          e.preventDefault()
-          this.prev()
-          break
+      case 38: // up arrow
+        e.preventDefault()
+        this.prev()
+        break
 
-        case 40: // down arrow
-          e.preventDefault()
-          this.next()
-          break
+      case 40: // down arrow
+        e.preventDefault()
+        this.next()
+        break
       }
 
       e.stopPropagation()
     }
 
-  , blur: function (e) {
+    , blur: function (e) {
       var that = this
       setTimeout(function () { that.hide() }, 150)
     }
 
-  , click: function (e) {
+    , click: function (e) {
       e.stopPropagation()
       e.preventDefault()
       this.select()
     }
 
-  , mouseenter: function (e) {
+    , mouseenter: function (e) {
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
     }
@@ -1703,15 +1703,15 @@
 
   $.fn.typeahead.defaults = {
     source: []
-  , items: 8
-  , menu: '<ul class="typeahead dropdown-menu"></ul>'
-  , item: '<li><a href="#"></a></li>'
+    , items: 8
+    , menu: '<ul class="typeahead dropdown-menu"></ul>'
+    , item: '<li><a href="#"></a></li>'
   }
 
   $.fn.typeahead.Constructor = Typeahead
 
 
- /* TYPEAHEAD DATA-API
+  /* TYPEAHEAD DATA-API
   * ================== */
 
   $(function () {
@@ -1723,4 +1723,4 @@
     })
   })
 
-}( window.jQuery );
+}( window.jQuery )

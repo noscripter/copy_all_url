@@ -1,0 +1,11 @@
+{
+  "name": "CopyAllUrl_Chrome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:noscripter/copy_all_url.git",
+  "author": "noscripter <xiaozhenghitfm@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.13.0"
+  }
+}
