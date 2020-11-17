@@ -6,7 +6,7 @@
   },
   "description": "Copy tabs URL to clipboard (formats : text, HTML, JSON or custom). Paste to open multiple URL at one go.",
   "icons": {
-    "128": "img/umbrella_128.png"
+    "96": "img/logo.png"
   },
   "background": {
     "scripts": [
