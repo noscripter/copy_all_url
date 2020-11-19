@@ -10,7 +10,7 @@
   },
   "background": {
     "scripts": [
-      "vendor/jquery-1.7.2_min.js",
+      "vendor/jquery.slim.js",
       "vendor/encoder.js",
       "background.js"
     ]
@@ -33,6 +33,6 @@
   "options_page": "options.html",
   "permissions": ["tabs", "http://*/*", "https://*/*", "management", "clipboardRead", "clipboardWrite", "notifications"],
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-  "version": "2.10",
+  "version": "3.0.0",
   "manifest_version": 2
 }

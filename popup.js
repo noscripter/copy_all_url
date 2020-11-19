@@ -30,9 +30,6 @@ jQuery(function($){
   $('#actionOption').click(function(){
     chrome.tabs.create({url: 'options.html'})
   })
-  $('#contribute a').click(function(){
-    chrome.tabs.create({url: 'options.html#donate'})
-  })
 
   var default_action = localStorage['default_action'] ? localStorage['default_action'] : 'menu'
   if( default_action != 'menu' ){
