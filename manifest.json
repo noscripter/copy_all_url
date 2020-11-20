@@ -41,6 +41,6 @@
     "notifications"
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "manifest_version": 2
 }
