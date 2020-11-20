@@ -1,4 +1,4 @@
-let bkg = chrome.extension.getBackgroundPage() // Récupération d'une référence vers la backgroundpage
+let bkg = chrome.extension.getBackgroundPage()
 
 chrome.runtime.onMessage.addListener(function(request){
   if (typeof request.type != 'string') return
@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(function(request){
   case 'copy':
     var nombre = (request.copied_url > 1) ? 's' : ''
     jQuery('#message').removeClass('error').html('<b>'+request.copied_url+'</b> url'+nombre+' successfully copied !')
-    setTimeout(function(){window.close()}, 3000) // Fermeture de la popup quelques secondes après affichage du message
+    setTimeout(function(){window.close()}, 3000)
     break
   case 'paste':
     if (request.errorMsg) {
@@ -44,12 +44,5 @@ jQuery(function($){
       $('#actionPaste').trigger('click', [true])
       break
     }
-  }
-
-  if (bkg.UpdateManager.recentUpdate()) {
-    var content = 'New version recently installed. Check the <a href="http://github.com/noscripter/copy_all_url/">changelog</a>.'
-    $('#recently-updated').html(content).show().find('a').click(function(){
-      chrome.tabs.create({url: $(this).attr('href')})
-    })
   }
 })

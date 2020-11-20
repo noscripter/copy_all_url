@@ -110,9 +110,6 @@ var Action = {
   }
 }
 
-/**
-* Fonctions de copie des URL dans une chaîne de caractères
-*/
 var CopyTo = {
   html: function(tabs){
     var anchor = localStorage['anchor'] ? localStorage['anchor'] : 'url'
@@ -172,9 +169,6 @@ var CopyTo = {
   }
 }
 
-/**
-* Raccourci clavier
-*/
 chrome.commands.onCommand.addListener(function(command){
   switch(command){
   case 'copy':
@@ -186,56 +180,6 @@ chrome.commands.onCommand.addListener(function(command){
     Action.paste()
     break
   }
-})
-
-/**
-* Update notification
-*/
-var UpdateManager = {
-  runtimeOnInstalledStatus: null,
-
-  recentUpdate: function(){
-    try {
-      var timeDiff = new Date().getTime() - new Date(parseInt(localStorage['update_last_time'])).getTime()
-      if (timeDiff < 1000*3600*24) {
-        return true
-      }
-    } catch (ex) { /* left blank */ }
-    return false
-  },
-
-  setBadge: function(){
-    if (!UpdateManager.recentUpdate()) {
-      chrome.browserAction.setBadgeText({text: ''})
-      return
-    }
-    chrome.browserAction.setBadgeText({text: 'NEW'})
-  }
-}
-UpdateManager.setBadge()
-chrome.runtime.onInstalled.addListener(function(details){
-  if (details.reason != 'update') {
-    UpdateManager.runtimeOnInstalledStatus = 'Not an update ('+details.reason+')'
-    return
-  }
-
-  if (details.previousVersion == chrome.runtime.getManifest().version) {
-    UpdateManager.runtimeOnInstalledStatus = 'Same version ('+details.previousVersion+')'
-    return
-  }
-
-  localStorage['update_last_time'] = new Date().getTime()
-  localStorage['update_previous_version'] = details.previousVersion
-  UpdateManager.runtimeOnInstalledStatus = 'Updated'
-
-  UpdateManager.setBadge()
-
-  chrome.notifications.create('cpau_update_notification', {
-    type: 'basic',
-    title: 'Copy All Urls updated',
-    message: 'New version installed : ' + chrome.runtime.getManifest().version + '. Click to see new features.',
-    iconUrl: 'img/umbrella_128.png'
-  }, function(){})
 })
 
 jQuery(function($){
