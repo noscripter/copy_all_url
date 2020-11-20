@@ -119,8 +119,7 @@ var CopyTo = {
       row_anchor = tabs[i].url
       if( anchor == 'title' ){
         try{
-          Encoder.EncodeType = 'entity'
-          row_anchor = Encoder.htmlEncode(tabs[i].title)
+          row_anchor = he.htmlEncode(tabs[i].title)
         } catch(ex){
           row_anchor = tabs[i].title
         }

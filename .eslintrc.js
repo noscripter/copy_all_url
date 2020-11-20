@@ -12,7 +12,7 @@ module.exports = {
     'browser': 'writable',
     'chrome': 'writable',
     'jQuery': 'writable',
-    'Encoder': 'writable',
+    'he': 'readonly',
     '$': 'writable'
   },
   'rules': {
