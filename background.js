@@ -1,3 +1,6 @@
+importScripts("vendor/jquery.slim.js");
+importScripts("vendor/he.js");
+
 var clipboardBuffer
 
 var Clipboard = {
